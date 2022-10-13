@@ -1,8 +1,12 @@
 import React from 'react';
 import './Sidebar.css';
 import Avatar from '@mui/material/Avatar';
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/counterUser';
 
 function Sidebar() {
+  const user = useSelector(selectUser);
+
   const recentItem = (topic) => {
     return (
       <div className="sidebar__recentItem">
@@ -20,9 +24,11 @@ function Sidebar() {
           src="https://cdn.cnn.com/cnnnext/dam/assets/191127134701-03-highest-mountains-world-photos-restricted-full-169.jpg"
           alt=""
         />
-        <Avatar className="sidebar__avatar" />
-        <h2>Patryk Panek</h2>
-        <h4>patryk.panek@gmail.com</h4>
+        <Avatar src={user.photoUrl} className="sidebar__avatar">
+          {user.displayName}
+        </Avatar>
+        <h2>{user.displayName}</h2>
+        <h4>{user.email}</h4>
       </div>
 
       <div className="sidebar__stats">

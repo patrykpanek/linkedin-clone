@@ -12,8 +12,11 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/counterUser';
 
 function Feed() {
+  const user = useSelector(selectUser);
   const [input, setInput] = useState('');
   const [posts, setPosts] = useState([]);
 
@@ -31,8 +34,8 @@ function Feed() {
   const sendPost = (e) => {
     e.preventDefault();
     db.collection('posts').add({
-      name: 'Sonny Sangha',
-      desc: 'this is a test',
+      name: firebase.auth().currentUser.displayName,
+      desc: user.displayName,
       message: input,
       photoUrl: '',
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
