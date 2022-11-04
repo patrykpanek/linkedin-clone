@@ -1,6 +1,6 @@
 # Deployed on firebase
 
-[slack-clone.app](https://slack-clone-f5e51.web.app/)
+[linkedin-clone.app](https://linkedin-clone-221a2.web.app)
 
 ## Used technologies
 
